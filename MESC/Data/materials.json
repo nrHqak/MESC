@@ -1,0 +1,5 @@
+[
+  {"Title":"Алгебра: Квадратные уравнения","Subject":"Математика","Grade":10,"Theory":"Формулы дискриминанта","Notes":"Краткий конспект","Practice":"10 задач","Recommendations":"Повторяй формулы каждый день","UsefulLinks":"https://example.com/math"},
+  {"Title":"Механика: Законы Ньютона","Subject":"Физика","Grade":11,"Theory":"Три закона Ньютона","Notes":"Схемы и определения","Practice":"8 задач","Recommendations":"Решай графические задачи","UsefulLinks":"https://example.com/physics"},
+  {"Title":"Органическая химия: Алканы","Subject":"Химия","Grade":12,"Theory":"Гомологический ряд","Notes":"Таблица реакций","Practice":"6 задач","Recommendations":"Учить механизмы реакций","UsefulLinks":"https://example.com/chem"}
+]
