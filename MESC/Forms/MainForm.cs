@@ -160,8 +160,26 @@ namespace MESC.Forms
                     {
                         if (_uploadManager.AddFile(ofd.FileName))
                         {
+                            var selectedSubject = AskSubject();
+                            if (string.IsNullOrWhiteSpace(selectedSubject)) return;
+                            var title = AskText("Название материала", Path.GetFileNameWithoutExtension(ofd.FileName));
+                            if (string.IsNullOrWhiteSpace(title)) return;
+                            var grade = int.Parse(_grade.SelectedItem.ToString());
+
                             _uploadStorageManager.Add(new UploadItem { FileName = Path.GetFileName(ofd.FileName), FullPath = ofd.FileName, UploadedAt = DateTime.Now.ToString("yyyy-MM-dd HH:mm") });
+                            _materialManager.AddMaterial(new MaterialItem
+                            {
+                                Title = title,
+                                Subject = selectedSubject,
+                                Grade = grade,
+                                Theory = "Пользовательский загруженный материал",
+                                Notes = "Файл: " + ofd.FileName,
+                                Practice = "Откройте файл для практики",
+                                Recommendations = "Добавлено через загрузку",
+                                UsefulLinks = ofd.FileName
+                            });
                             refresh();
+                            MessageBox.Show($"Материал добавлен в предмет '{selectedSubject}' для {grade} класса.");
                         }
                         else MessageBox.Show("Ошибка добавления файла");
                     }
@@ -189,6 +207,33 @@ namespace MESC.Forms
         {
             try { Process.Start(url); }
             catch (Exception ex) { MessageBox.Show($"Ошибка открытия: {ex.Message}"); }
+        }
+
+        private string AskSubject()
+        {
+            var subjects = new[] { "Математика", "Физика", "Химия", "Биология", "История", "Информатика", "Английский язык", "География" };
+            using (var dialog = new Form { Text = "Выбор предмета", Width = 360, Height = 180, StartPosition = FormStartPosition.CenterParent })
+            {
+                var cb = new ComboBox { Left = 20, Top = 20, Width = 300, DropDownStyle = ComboBoxStyle.DropDownList };
+                cb.Items.AddRange(subjects);
+                cb.SelectedIndex = 0;
+                var ok = new Button { Text = "OK", Left = 20, Top = 70, Width = 120, DialogResult = DialogResult.OK };
+                dialog.Controls.AddRange(new Control[] { cb, ok });
+                dialog.AcceptButton = ok;
+                return dialog.ShowDialog() == DialogResult.OK ? cb.SelectedItem.ToString() : null;
+            }
+        }
+
+        private string AskText(string title, string defaultValue)
+        {
+            using (var dialog = new Form { Text = title, Width = 420, Height = 180, StartPosition = FormStartPosition.CenterParent })
+            {
+                var tb = new TextBox { Left = 20, Top = 20, Width = 360, Text = defaultValue };
+                var ok = new Button { Text = "OK", Left = 20, Top = 70, Width = 120, DialogResult = DialogResult.OK };
+                dialog.Controls.AddRange(new Control[] { tb, ok });
+                dialog.AcceptButton = ok;
+                return dialog.ShowDialog() == DialogResult.OK ? tb.Text.Trim() : null;
+            }
         }
     }
 }

@@ -21,5 +21,12 @@ namespace MESC.Managers
             m.Subject.ToLower().Contains(q.ToLower()) ||
             m.Recommendations.ToLower().Contains(q.ToLower()));
         public IEnumerable<MaterialItem> Recommend(int grade) => GetByGrade(grade).OrderBy(_ => System.Guid.NewGuid()).Take(3);
+
+        public void AddMaterial(MaterialItem material)
+        {
+            var all = GetAll();
+            all.Add(material);
+            File.WriteAllText(_materialsPath, _serializer.Serialize(all));
+        }
     }
 }
