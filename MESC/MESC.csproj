@@ -60,6 +60,7 @@
     <Compile Include="Managers\UploadStorageManager.cs" />
     <Compile Include="Managers\ThemeManager.cs" />
     <Compile Include="Controls\RoundedPanel.cs" />
+    <Compile Include="Controls\RoundedButton.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

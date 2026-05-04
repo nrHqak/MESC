@@ -2,8 +2,8 @@ using System;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using MESC.Controls;
 using MESC.Managers;
-using MESC.Models;
 
 namespace MESC.Forms
 {
@@ -12,23 +12,46 @@ namespace MESC.Forms
         private readonly UserManager _userManager;
         private readonly TextBox _tbUser = new TextBox();
         private readonly TextBox _tbPass = new TextBox();
+
         public LoginForm()
         {
-            Text = "MESC - Login"; Size = new Size(440, 320); StartPosition = FormStartPosition.CenterScreen;
+            Text = "MESC - Вход";
+            Size = new Size(480, 360);
+            StartPosition = FormStartPosition.CenterScreen;
+            BackColor = Color.FromArgb(248, 250, 252);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
+
             var p = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "users.json");
             _userManager = new UserManager(p);
-            Controls.AddRange(new Control[] {
-                new Label{Text="Логин",Location=new Point(40,40)}, _tbUser,
-                new Label{Text="Пароль",Location=new Point(40,95)}, _tbPass,
-                new Button{Text="Войти",Location=new Point(40,150),Width=160,BackColor=Color.FromArgb(37,99,235),ForeColor=Color.White},
-                new Button{Text="Регистрация",Location=new Point(210,150),Width=160}
-            });
-            _tbUser.SetBounds(40,60,330,25); _tbPass.SetBounds(40,115,330,25); _tbPass.PasswordChar='*';
-            ((Button)Controls[4]).Click += LoginClick; ((Button)Controls[5]).Click += (s,e)=> new RegisterForm().ShowDialog();
+
+            var card = new RoundedPanel { Left = 45, Top = 35, Width = 370, Height = 260, BackColor = Color.White, Radius = 18 };
+            card.Controls.Add(new Label { Text = "MESC", Left = 24, Top = 20, Font = new Font("Segoe UI", 20, FontStyle.Bold), ForeColor = Color.FromArgb(30, 41, 59), AutoSize = true });
+            card.Controls.Add(new Label { Text = "Войдите в аккаунт", Left = 24, Top = 58, Font = new Font("Segoe UI", 9), ForeColor = Color.Gray, AutoSize = true });
+
+            _tbUser.SetBounds(24, 90, 320, 34);
+            _tbPass.SetBounds(24, 132, 320, 34);
+            _tbPass.PasswordChar = '*';
+            _tbUser.Font = _tbPass.Font = new Font("Segoe UI", 10);
+
+            var loginBtn = new RoundedButton { Text = "Войти", Left = 24, Top = 182, Width = 150, Height = 40 };
+            var registerBtn = new RoundedButton { Text = "Регистрация", Left = 194, Top = 182, Width = 150, Height = 40, BaseColor = Color.FromArgb(30, 41, 59), HoverColor = Color.FromArgb(51, 65, 85) };
+
+            loginBtn.Click += LoginClick;
+            registerBtn.Click += (s, e) => new RegisterForm().ShowDialog();
+
+            card.Controls.AddRange(new Control[] { _tbUser, _tbPass, loginBtn, registerBtn });
+            Controls.Add(card);
         }
+
         private void LoginClick(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(_tbUser.Text) || string.IsNullOrWhiteSpace(_tbPass.Text)) { MessageBox.Show("Заполните поля"); return; }
+            if (string.IsNullOrWhiteSpace(_tbUser.Text) || string.IsNullOrWhiteSpace(_tbPass.Text))
+            {
+                MessageBox.Show("Заполните поля");
+                return;
+            }
+
             var user = _userManager.Login(_tbUser.Text.Trim(), _tbPass.Text);
             if (user == null) { MessageBox.Show("Неверные данные"); return; }
             Hide(); new MainForm(user).ShowDialog(); Show();

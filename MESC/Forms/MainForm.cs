@@ -5,6 +5,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using MESC.Controls;
 using MESC.Managers;
 using MESC.Models;
 
@@ -40,8 +41,7 @@ namespace MESC.Forms
             int y = 80;
             foreach (var m in menu)
             {
-                var b = new Button { Text = m, Left = 20, Top = y, Width = 180, Height = 40, FlatStyle = FlatStyle.Flat, ForeColor = Color.White, BackColor = Color.FromArgb(30, 41, 59) };
-                b.FlatAppearance.BorderSize = 0;
+                var b = new RoundedButton { Text = m, Left = 20, Top = y, Width = 180, Height = 40, BaseColor = Color.FromArgb(30, 41, 59), HoverColor = Color.FromArgb(51, 65, 85) };
                 b.Click += (s, e) => Navigate(m);
                 sidebar.Controls.Add(b);
                 y += 48;
@@ -52,7 +52,7 @@ namespace MESC.Forms
             _grade.SelectedIndex = 0;
             _grade.SetBounds(20, 20, 120, 30);
             _search.SetBounds(160, 20, 260, 30);
-            var theme = new Button { Text = "Light/Dark", Left = 440, Top = 20, Width = 120 };
+            var theme = new RoundedButton { Text = "Light/Dark", Left = 440, Top = 16, Width = 130, Height = 38, BaseColor = Color.FromArgb(30, 41, 59), HoverColor = Color.FromArgb(51, 65, 85) };
             theme.Click += (s, e) => ThemeManager.Toggle(this);
             top.Controls.AddRange(new Control[] { _grade, _search, theme, new Label { Text = $"Добро пожаловать, {_currentUser.Username}", Left = 580, Top = 25, AutoSize = true } });
 
@@ -80,7 +80,13 @@ namespace MESC.Forms
         {
             _content.Controls.Clear();
             var popular = string.Join(", ", _materialManager.Recommend(int.Parse(_grade.SelectedItem.ToString())).Select(x => x.Subject));
-            _content.Controls.Add(new Label { Text = $"Добро пожаловать в МЭСК, {_currentUser.Username}\nПопулярные предметы: {popular}", AutoSize = true, Font = new Font("Segoe UI", 16, FontStyle.Bold), Left = 20, Top = 20 });
+            var hero = new RoundedPanel { Left = 20, Top = 20, Width = 900, Height = 140, BackColor = Color.FromArgb(37, 99, 235), Radius = 18 };
+            hero.Controls.Add(new Label { Text = $"Добро пожаловать, {_currentUser.Username}!", Left = 24, Top = 24, Font = new Font("Segoe UI", 18, FontStyle.Bold), ForeColor = Color.White, AutoSize = true });
+            hero.Controls.Add(new Label { Text = $"Популярные предметы: {popular}", Left = 24, Top = 66, Font = new Font("Segoe UI", 11), ForeColor = Color.WhiteSmoke, AutoSize = true });
+            var quickMaterials = new RoundedButton { Text = "Открыть материалы", Left = 24, Top = 94, Width = 170, Height = 34, BaseColor = Color.White, HoverColor = Color.FromArgb(226, 232, 240), ForeColor = Color.FromArgb(30, 41, 59) };
+            quickMaterials.Click += (s, e) => ShowMaterials();
+            hero.Controls.Add(quickMaterials);
+            _content.Controls.Add(hero);
         }
 
         private void ShowSubjects()
