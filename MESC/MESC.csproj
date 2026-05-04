@@ -52,9 +52,12 @@
     <Compile Include="Models\Subject.cs" />
     <Compile Include="Models\MaterialItem.cs" />
     <Compile Include="Models\DriveLink.cs" />
+    <Compile Include="Models\UploadItem.cs" />
     <Compile Include="Managers\UserManager.cs" />
     <Compile Include="Managers\MaterialManager.cs" />
     <Compile Include="Managers\UploadManager.cs" />
+    <Compile Include="Managers\DriveLinkManager.cs" />
+    <Compile Include="Managers\UploadStorageManager.cs" />
     <Compile Include="Managers\ThemeManager.cs" />
     <Compile Include="Controls\RoundedPanel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -63,6 +66,8 @@
     <None Include="App.config" />
     <Content Include="Data\users.json"><CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory></Content>
     <Content Include="Data\materials.json"><CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory></Content>
+    <Content Include="Data\drive_links.json"><CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory></Content>
+    <Content Include="Data\uploads.json"><CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory></Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
