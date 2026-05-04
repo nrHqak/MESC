@@ -1,5 +1,31 @@
 [
-  {"Title":"Математика — общий диск","Description":"Подборка теории и задач для 10-12 классов","Url":"https://drive.google.com/drive/folders/EXAMPLE_MATH"},
-  {"Title":"Физика — формулы и разборы","Description":"PDF и конспекты по механике/электродинамике","Url":"https://drive.google.com/drive/folders/EXAMPLE_PHYS"},
-  {"Title":"История — конспекты","Description":"Материалы по всемирной и отечественной истории","Url":"https://drive.google.com/drive/folders/EXAMPLE_HISTORY"}
+  {"Title":"Химия — Папка 1","Description":"Материалы по химии","Url":"https://drive.google.com/drive/folders/1YtjaJItnc5VglnP2sLPcOka_4O1iZC0d"},
+  {"Title":"Химия — Папка 2","Description":"Материалы по химии","Url":"https://drive.google.com/drive/folders/1ByCNxLOXuS0YuoBgGWXhTCcTBREXSfvn"},
+  {"Title":"Химия — Папка 3","Description":"Материалы по химии","Url":"https://drive.google.com/drive/folders/1c5hAIM7Wwlve6DF7WUrBEmEJEO55U7P0"},
+  {"Title":"Химия — Папка 4","Description":"Материалы по химии","Url":"https://drive.google.com/drive/folders/12K9G2ZqJp-NbyIOy2io4Aj3wGg6JDCHE"},
+
+  {"Title":"Биология — Папка 1","Description":"Материалы по биологии","Url":"https://drive.google.com/drive/folders/1o7On7VjDd4judsjpjsQFm5RgUVN9F-GF"},
+  {"Title":"Биология — Папка 2","Description":"Материалы по биологии","Url":"https://drive.google.com/drive/folders/1fLCFhitbQrmc_aHnf4gvDALwa5B8DZDH"},
+  {"Title":"Биология — Папка 3","Description":"Материалы по биологии","Url":"https://drive.google.com/drive/folders/1pOwh-vmXw_KQmCjE4zPxNF-gdjRZ4nv4"},
+  {"Title":"Биология — Папка 4","Description":"Материалы по биологии","Url":"https://drive.google.com/drive/folders/1tD1O9g4WteJss45SJNpHLdlU5FWNgh-f"},
+
+  {"Title":"Информатика — Папка 1","Description":"Материалы по информатике","Url":"https://drive.google.com/drive/folders/1p7Ymw2n1OOxO54_EcWqxp4jlw-028Rwb"},
+  {"Title":"Информатика — Папка 2","Description":"Материалы по информатике","Url":"https://drive.google.com/drive/folders/1uqsDeMEu9tSTaPjdYlD03yNIecltLh8_"},
+  {"Title":"Информатика — Папка 3","Description":"Материалы по информатике","Url":"https://drive.google.com/drive/folders/1Ul3gJo-ztjnUa7OGQlhkWTav10q0pCp8"},
+  {"Title":"Информатика — Папка 4","Description":"Материалы по информатике","Url":"https://drive.google.com/drive/folders/1VDLO26NSuMFrpnY3rBVjvFxHPLhqF-Ce"},
+
+  {"Title":"Физика — Папка 1","Description":"Материалы по физике","Url":"https://drive.google.com/drive/folders/1ki1ohwObf-LV6YlQCaLH2vz4DdU7ajVi"},
+  {"Title":"Физика — Папка 2","Description":"Материалы по физике","Url":"https://drive.google.com/drive/folders/1oZWmbkifBylV5DOXQ7EhaNLarUScVu35"},
+  {"Title":"Физика — Папка 3","Description":"Материалы по физике","Url":"https://drive.google.com/drive/folders/1eabKYP4bojnFdNQ4UCjS9KFnsg3C4C3i"},
+  {"Title":"Физика — Папка 4","Description":"Материалы по физике","Url":"https://drive.google.com/drive/folders/1mcGOOgbOWOXtMHFbrEMZSD591o_-8WnJ"},
+
+  {"Title":"Математика — Папка 1","Description":"Материалы по математике","Url":"https://drive.google.com/drive/folders/1inSh8BxhU5apCgmONWSUYnajdVThAh3f"},
+  {"Title":"Математика — Папка 2","Description":"Материалы по математике","Url":"https://drive.google.com/drive/folders/16O03mz-wmfKUdBJiP7thDulTEKOqtCbz"},
+  {"Title":"Математика — Папка 3","Description":"Материалы по математике","Url":"https://drive.google.com/drive/folders/1EUelRkDpoWbCjLkc3QwFy1A39k-Bm2ei"},
+  {"Title":"Математика — Папка 4","Description":"Материалы по математике","Url":"https://drive.google.com/drive/folders/1w2EDiJD7XwOF5Yncf8xgdAV_J5JSow-B"},
+
+  {"Title":"Казахская история — Документ","Description":"Документ по казахской истории","Url":"https://docs.google.com/document/d/1N1zuRPq95GQX7yvvO7NQubHZKDD2R5cr/edit"},
+
+  {"Title":"Русский язык — Папка 1","Description":"Материалы по русскому языку","Url":"https://drive.google.com/drive/folders/1YelJ77uIVdpjWDyCznu5Ds5oQz2uU9GJ"},
+  {"Title":"Русский язык — Папка 2","Description":"Материалы по русскому языку","Url":"https://drive.google.com/drive/folders/1AGKSKK8dFvP1MrTCqkteZ09ET3K-PMoU"}
 ]
