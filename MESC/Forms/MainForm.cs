@@ -112,7 +112,7 @@ namespace MESC.Forms
             {
                 if (list.SelectedItem is MaterialItem m)
                 {
-                    MessageBox.Show($"{m.Subject}\nТеория: {m.Theory}\nКонспект: {m.Notes}\nПрактика: {m.Practice}\nРекомендации: {m.Recommendations}\nСсылка: {m.UsefulLinks}", m.Title);
+                    OpenMaterial(m);
                 }
             };
             _content.Controls.Add(list);
@@ -207,6 +207,24 @@ namespace MESC.Forms
         {
             try { Process.Start(url); }
             catch (Exception ex) { MessageBox.Show($"Ошибка открытия: {ex.Message}"); }
+        }
+
+        private void OpenMaterial(MaterialItem material)
+        {
+            var link = material.UsefulLinks ?? string.Empty;
+            if (File.Exists(link))
+            {
+                Process.Start(link);
+                return;
+            }
+
+            if (link.StartsWith("http://") || link.StartsWith("https://"))
+            {
+                OpenUrl(link);
+                return;
+            }
+
+            MessageBox.Show($"{material.Subject}\nТеория: {material.Theory}\nКонспект: {material.Notes}\nПрактика: {material.Practice}\nРекомендации: {material.Recommendations}\nСсылка/Путь: {material.UsefulLinks}", material.Title);
         }
 
         private string AskSubject()
